@@ -483,7 +483,7 @@ async def txt_handler(bot: Client, m: Message):
     b_name = file_name.replace('_', ' ')
     quality = "720p"
     res = "1280x720"
-    CR = '{MR}'
+    CR = '{𝐓𝐇𝐄 𝐁𝐔𝐓𝐂𝐇𝐄𝐑🦇}'
     
 
     await editable.delete()

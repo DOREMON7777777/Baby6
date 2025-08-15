@@ -42,8 +42,8 @@ import ffmpeg
 import jwt
 
 # Initialize the bot
-API_HASH = "0c9262b17a45cb67b447ffd8e38f1e4d"
-API_ID = "22274497"
+API_HASH = "f4d7a4a9265404c5b94c1793b8144088"
+API_ID = "25342719"
 bot_token = os.getenv("BOT_TOKEN", "")  # Default to empty string if not set
 MR = os.getenv("MR", "DefaultMR")       # Default to "DefaultMR" if not set
 TOKEN_CP = os.getenv("TOKEN_CP", "")    # Default to empty string if not set
@@ -60,8 +60,8 @@ bot = Client("bot",
              api_hash=API_HASH,
              bot_token=bot_token)
 
-owner_id = [1003575883]
-auth_users = [1003575883]
+owner_id = [7967145077]
+auth_users = [7967145077]
 photo1 = 'https://envs.sh/PQ_.jpg'
 getstatusoutput(f"wget {photo1} -O 'photo.jpg'")
 photo = "photo.jpg"

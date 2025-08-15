@@ -759,13 +759,25 @@ async def txt_handler(bot: Client, m: Message):
                     prog = await m.reply_text(Show, disable_web_page_preview=True)
                     res_file = await helper.download_and_decrypt_video(url, cmd, name, appxkey)
                     filename = res_file
-                    await prog.delete(True)
-                    await bot.send_video(
-                        chat_id=m.chat.id,
-                        video=filename,
-                        caption=cc,
-                        supports_streaming=True
-                    )
+                    thumb_path = f"{name}_thumb.jpg"
+try:
+    subprocess.run([
+        "ffmpeg", "-y", "-i", filename, "-ss", "00:00:05", "-vframes", "1", thumb_path
+    ], check=True)
+except Exception:
+    thumb_path = None
+
+await bot.send_video(
+    chat_id=m.chat.id,
+    video=filename,
+    caption=cc,
+    thumb=thumb_path if thumb_path and os.path.exists(thumb_path) else None,
+    supports_streaming=True
+)
+
+if thumb_path and os.path.exists(thumb_path):
+    os.remove(thumb_path)
+                    
                     os.remove(filename)
                     count += 1
                     await asyncio.sleep(1)
@@ -797,12 +809,29 @@ async def txt_handler(bot: Client, m: Message):
                     res_file = await helper.decrypt_and_merge_video(mpd, keys_string, path, name, 720)
                     filename = res_file
                     await prog.delete(True)
-                    await bot.send_video(
-                        chat_id=m.chat.id,
-                        video=filename,
-                        caption=cc,
-                        supports_streaming=True
-                    )
+                    thumb_path = f"{name}_thumb.jpg"
+try:
+    subprocess.run([
+        "ffmpeg", "-y", "-i", filename, "-ss", "00:00:05", "-vframes", "1", thumb_path
+    ], check=True)
+except Exception:
+    thumb_path = None
+
+await bot.send_video(
+    chat_id=m.chat.id,
+    video=filename,
+    caption=cc,
+    thumb=thumb_path if thumb_path and os.path.exists(thumb_path) else None,
+    supports_streaming=True
+)
+
+if thumb_path and os.path.exists(thumb_path):
+    os.remove(thumb_path)
+                        
+                        
+                        
+        
+                    
                     os.remove(filename)
                     count += 1
                     await asyncio.sleep(1)
@@ -835,12 +864,24 @@ async def txt_handler(bot: Client, m: Message):
                     res_file = await helper.download_video(url, cmd, name)
                     filename = res_file
                     await prog.delete(True)
-                    await bot.send_video(
-                        chat_id=m.chat.id,
-                        video=filename,
-                        caption=cc,
-                        supports_streaming=True
-                    )
+                    thumb_path = f"{name}_thumb.jpg"
+try:
+    subprocess.run([
+        "ffmpeg", "-y", "-i", filename, "-ss", "00:00:05", "-vframes", "1", thumb_path
+    ], check=True)
+except Exception:
+    thumb_path = None
+
+await bot.send_video(
+    chat_id=m.chat.id,
+    video=filename,
+    caption=cc,
+    thumb=thumb_path if thumb_path and os.path.exists(thumb_path) else None,
+    supports_streaming=True
+)
+
+if thumb_path and os.path.exists(thumb_path):
+    os.remove(thumb_path)
                     os.remove(filename)
                     count += 1
                     time.sleep(1)
